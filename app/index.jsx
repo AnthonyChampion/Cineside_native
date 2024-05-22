@@ -7,7 +7,7 @@ export default function App() {
         <View className="flex-1 justify-center items-center bg-zinc-900">
             <Text className="text-3xl text-yellow-400 font-pblack">Cineside</Text>
             <StatusBar style="auto" />
-            <Link className="text-white" href="/profile">Go to Profile</Link>
+            <Link className="text-white" href="/home">Go to Home</Link>
         </View>
     );
 }
