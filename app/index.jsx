@@ -1,4 +1,4 @@
-import { Redirect, router } from 'expo-router';
+import { Link, Redirect, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { Image, ScrollView, Text, View } from 'react-native';
 import { images } from '../constants';
@@ -9,7 +9,7 @@ export default function App() {
     return (
         <SafeAreaView className="bg-zinc-900 h-full">
             <ScrollView contentContainerStyle={{ height: "100%" }}>
-                <View className="w-full justify-center items-center min-h-full">
+                <View className="w-full justify-center items-center min-h-[85vh]">
                     <Image source={images.logo} className="w-28 h-28" />
                     <Text className="text-3xl text-white font-pblack">Cineside</Text>
                     <View>
@@ -17,6 +17,9 @@ export default function App() {
                             title="Continue with Email"
                             handlePress={() => router.push("/sign-in")}
                             containerStyles="w-64 mt-24" />
+                    </View>
+                    <View>
+                        <Link href="/home" className="text-white text-xl font-psemibold mt-8">Go home</Link>
                     </View>
                 </View>
             </ScrollView>

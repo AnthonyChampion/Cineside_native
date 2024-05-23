@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 import { icons } from '../constants'
 
-const FormField = ({ title, value, placeholder, handleChangeText, otherStyles }) => {
+export default function FormField({ title, value, placeholder, handleChangeText, otherStyles }) {
     const [showPassword, setShowPassword] = useState(false)
     return (
         <View className={`space-y-2 ${otherStyles}`}>
@@ -32,5 +32,3 @@ const FormField = ({ title, value, placeholder, handleChangeText, otherStyles })
         </View>
     )
 }
-
-export default FormField

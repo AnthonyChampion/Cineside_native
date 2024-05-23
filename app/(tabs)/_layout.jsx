@@ -3,13 +3,14 @@ import React from 'react'
 import { Tabs, Redirect } from 'expo-router';
 
 import { icons } from "../../constants";
+import { StatusBar } from 'expo-status-bar';
 
 const TabIcon = ({ icon, color, name, focused }) => {
     return (
-        <View className="items-center justify-center gap-2">
+        <View className="flex items-center justify-center gap-2">
             <Image
                 source={icon}
-                resizeMode='containe'
+                resizeMode='contain'
                 tintColor={color}
                 className="w-7 h-7" />
             <Text className={`${focused ? "font-psemibold" : "font-pregular"} text-xs text-white`}>{name}</Text>
@@ -17,7 +18,7 @@ const TabIcon = ({ icon, color, name, focused }) => {
     )
 }
 
-const TabsLayout = () => {
+export default function TabsLayout() {
     return (
         <>
             <Tabs
@@ -82,8 +83,7 @@ const TabsLayout = () => {
                         )
                     }} />
             </Tabs>
+            <StatusBar backgroundColor="#18181B" style="light" />
         </>
     )
 }
-
-export default TabsLayout

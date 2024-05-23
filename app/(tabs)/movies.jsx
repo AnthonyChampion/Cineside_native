@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const Movies = () => {
+export default function Movies() {
     return (
         <View>
             <Text>Movies</Text>
@@ -9,4 +9,3 @@ const Movies = () => {
     )
 }
 
-export default Movies

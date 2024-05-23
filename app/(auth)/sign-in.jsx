@@ -7,7 +7,7 @@ import FormField from '../../components/FormField';
 import CustomButton from '../../components/CustomButton';
 import { Link } from 'expo-router';
 
-const SignIn = () => {
+export default function SignIn() {
 
     const [form, setForm] = useState({
         email: "",
@@ -59,5 +59,3 @@ const SignIn = () => {
         </SafeAreaView>
     )
 }
-
-export default SignIn
