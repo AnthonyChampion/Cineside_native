@@ -35,50 +35,50 @@ export default function TabsLayout() {
                 }}>
                 <Tabs.Screen name="home"
                     options={{
-                        title: "Home",
+                        title: "Accueil",
                         headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
                             <TabIcon
                                 icon={icons.home}
                                 color={color}
-                                name="Home"
+                                name="Menu"
                                 focused={focused} />
                         )
                     }} />
                 <Tabs.Screen name="favorites"
                     options={{
-                        title: "Favorites",
+                        title: "Favoris",
                         headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
                             <TabIcon
                                 icon={icons.heart}
                                 color={color}
-                                name="Favorites"
+                                name="Favoris"
                                 focused={focused} />
                         )
                     }} />
                 <Tabs.Screen name="movies"
                     options={{
-                        title: "Movies",
+                        title: "Films",
                         headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
                             <TabIcon
                                 icon={icons.movie}
                                 color={color}
-                                name="Movies"
+                                name="Films"
                                 focused={focused}
                             />
                         )
                     }} />
                 <Tabs.Screen name="profile"
                     options={{
-                        title: "Profile",
+                        title: "Profil",
                         headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
                             <TabIcon
                                 icon={icons.profile}
                                 color={color}
-                                name="Profile"
+                                name="Profil"
                                 focused={focused} />
                         )
                     }} />

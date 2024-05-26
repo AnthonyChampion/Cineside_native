@@ -2,22 +2,23 @@ import { View, Text, ScrollView, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from "../../constants";
-import SearchInput from '../../components/SearchInput';
-import UpcomingMovies from '../../components/UpcomingMovies';
-import { fetchTrendingMovies, fetchUpcommingMovies } from '../../api/moviedb';
-import TrendindMovies from '../../components/TrendingMovies';
+import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcommingMovies } from '../../api/moviedb';
+import TrendingMovies from '../../components/TrendingMovies';
+import MovieList from '../../components/MovieList';
 
 export default function Home() {
 
     const [trending, setTrending] = useState([]);
     const [upcoming, setUpcoming] = useState([]);
+    const [topRated, setTopRated] = useState([]);
 
     useEffect(() => {
-        getTrendindMovies();
+        getTrendingMovies();
         getUpcomingMovies();
+        getTopRatedMovies();
     }, [])
 
-    const getTrendindMovies = async () => {
+    const getTrendingMovies = async () => {
         const data = await fetchTrendingMovies();
         if (data && data.results) setTrending(data.results);
     }
@@ -25,43 +26,49 @@ export default function Home() {
         const data = await fetchUpcommingMovies();
         if (data && data.results) setUpcoming(data.results);
     }
+    const getTopRatedMovies = async () => {
+        const data = await fetchTopRatedMovies();
+        if (data && data.results) setTopRated(data.results);
+    }
 
     return (
         <SafeAreaView className="bg-zinc-900 h-full">
             <ScrollView>
-                <View className="my-6 px-4 space-y-6">
+                <View className="my-6">
                     <View className="justify-between items-start flex-row mb-6">
                         <View>
-                            <Text className="text-white font-pmedium text-sm">
-                                Welcome to
+                            <Text className="text-white font-pmedium text-sm pl-4">
+                                Bienvenue sur
                             </Text>
-                            <Text className="text-white font-psemibold text-2xl text-yellow-400">
+                            <Text className="text-white font-psemibold text-2xl text-yellow-400 pl-4">
                                 Cineside
                             </Text>
                         </View>
-                        <View className="mt-1.5">
+                        <View className="mt-1.5 pr-2">
                             <Image
                                 source={images.logo}
-                                className="w-9 h-10"
+                                className="w-14 h-12"
                                 resizeMode='contain' />
                         </View>
                     </View>
-                    <SearchInput />
                     <View className="w-full flex-1 pt-5 pb-8">
-                        <Text className="text-white text-lg font-pregular mb-3">
-                            Trending Movies
-                        </Text>
-                        <TrendindMovies data={trending} />
+                        <View className="flex-row justify-between items-center">
+                            <Text className="text-white text-lg font-pregular mb-3 pl-4">
+                                Sorties récentes
+                            </Text>
+                            <Text className="text-yellow-400 text-s font-pregular mb-3 pr-4">
+                                Voir tout
+                            </Text>
+                        </View>
+                        <TrendingMovies data={trending} />
                     </View>
                     <View className="w-full flex-1 pt-5 pb-8">
-                        <Text className="text-white text-lg font-pregular mb-3">
-                            Upcoming Movies
-                        </Text>
-                        <UpcomingMovies data={upcoming} />
+                        <MovieList title="Films en tendance" data={upcoming} />
+                    </View>
+                    <View className="w-full flex-1 pt-5 pb-8">
+                        <MovieList title="Top TMDb" data={topRated} />
                     </View>
                 </View>
-
-
             </ScrollView>
         </SafeAreaView>
     )

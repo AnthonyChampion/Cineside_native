@@ -28,9 +28,9 @@ export default function SignUp() {
                     <Image source={images.logo}
                         resizeMode="contain"
                         className="w-24 h-24" />
-                    <Text className="text-2xl text-white text-semibold font-psemibold ">Sign up to Cineside</Text>
+                    <Text className="text-2xl text-white text-semibold font-psemibold ">Enregistrez-vous !</Text>
                     <FormField
-                        title="Username"
+                        title="Nom d'utilisateur"
                         value={form.username}
                         handleChangeText={(e) => setForm({ ...form, username: e })}
                         otherStyles="mt-10"
@@ -43,23 +43,23 @@ export default function SignUp() {
                         keyboardType="email-adress"
                     />
                     <FormField
-                        title="Password"
+                        title="Mot de passe"
                         value={form.password}
                         handleChangeText={(e) => setForm({ ...form, password: e })}
                         otherStyles="mt-7"
                     />
 
                     <CustomButton
-                        title="Sign In"
+                        title="Enregistrez-vous"
                         handlePress={submit}
                         containerStyles="mt-7 h-14"
                         isLoading={isSubmitting} />
 
-                    <View className="justify-center pt-5 flex-row gap-2">
+                    <View className="justify-center pt-5 flex-col gap-2">
                         <Text className="text-lg text-gray-100 font-pregular">
-                            Have an account already ?
+                            Vous avez déja un compte ?
                         </Text>
-                        <Link href="/sign-in" className="text-lg font-psemibold text-yellow-400">Sign in</Link>
+                        <Link href="/sign-in" className="text-s font-psemibold text-yellow-400">Connectez-vous</Link>
                     </View>
                 </View>
             </ScrollView>

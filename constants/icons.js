@@ -13,6 +13,8 @@ import eye from "../assets/icons/eye.png";
 import play from "../assets/icons/play.png";
 import heart from "../assets/icons/heart.png";
 import movie from "../assets/icons/movie.png";
+import righticon from "../assets/icons/righticon.png";
+import lefticon from "../assets/icons/lefticon.png";
 
 export default {
   play,
@@ -30,4 +32,6 @@ export default {
   eye,
   heart,
   movie,
+  righticon,
+  lefticon
 };

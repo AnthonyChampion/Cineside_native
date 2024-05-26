@@ -27,7 +27,7 @@ export default function SignIn() {
                     <Image source={images.logo}
                         resizeMode="contain"
                         className="w-24 h-24" />
-                    <Text className="text-2xl text-white text-semibold font-psemibold ">Log in to Cineside</Text>
+                    <Text className="text-2xl text-white text-semibold font-psemibold ">Connectez-vous !</Text>
                     <FormField
                         title="Email"
                         value={form.email}
@@ -36,23 +36,23 @@ export default function SignIn() {
                         keyboardType="email-adress"
                     />
                     <FormField
-                        title="Password"
+                        title="Mot de passe"
                         value={form.password}
                         handleChangeText={(e) => setForm({ ...form, password: e })}
                         otherStyles="mt-7"
                     />
 
                     <CustomButton
-                        title="Sign In"
+                        title="Connexion"
                         handlePress={submit}
                         containerStyles="mt-7 h-14"
                         isLoading={isSubmitting} />
 
-                    <View className="justify-center pt-5 flex-row gap-2">
+                    <View className="justify-center pt-5 flex-col gap-2">
                         <Text className="text-lg text-gray-100 font-pregular">
-                            Don't have an account ?
+                            Vous n'avez-pas de compte ?
                         </Text>
-                        <Link href="/sign-up" className="text-lg font-psemibold text-yellow-400">Sign up</Link>
+                        <Link href="/sign-up" className="text-s font-psemibold text-yellow-400">Enregistrez-vous !</Link>
                     </View>
                 </View>
             </ScrollView>
