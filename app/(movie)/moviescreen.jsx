@@ -7,6 +7,7 @@ import Cast from "../../components/Cast";
 import MovieList from "../../components/MovieList";
 import { icons } from "../../constants";
 import { useLocalSearchParams } from "expo-router";
+import { ChevronLeftIcon, HeartIcon } from "react-native-heroicons/outline";
 
 var { width, height } = Dimensions.get("window");
 
@@ -46,19 +47,19 @@ export default function MovieScreen() {
             className="flex-1 bg-zinc-900"
         >
             <View className="w-full">
-                <SafeAreaView className={"absolute z-20 w-full flex-row justify-between items-center px-4"}>
+                <SafeAreaView className={"absolute z-20 w-full flex-row justify-between items-center px-4 py-2"}>
                     <TouchableOpacity onPress={() => navigation.goBack()} className="rounded-xl p-1 mt-12" >
-                        <Image source={icons.lefticon} className="w-6 h-6" />
+                        <ChevronLeftIcon size="28" strokeWidth={2.5} color="white" />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => toggleFavourite(!isFavourite)} className="mt-12">
-                        <Image source={icons.heart} tintColor="#FACC14" className="w-8 h-8" />
+                        <HeartIcon size="35" color={isFavourite ? "yellow" : "white"} />
                     </TouchableOpacity>
                 </SafeAreaView>
 
                 <View>
                     <Image
                         source={{ uri: image500(movie?.poster_path) }}
-                        style={{ width, height: height * 0.55 }}
+                        style={{ width, height: height * 0.70 }}
                     />
                     <LinearGradient
                         colors={["transparent", "rgba(23,23,23,0.8)", "rgba(23,23,23, 1)"]}
@@ -71,14 +72,14 @@ export default function MovieScreen() {
 
             </View>
             <View style={{ margintTop: -(height * 0.09) }} className="space-y-3">
-                <Text className="text-white text-center text-3xl font-bold tracking-wider">
+                <Text className="text-white text-center text-2xl font-pregular tracking-wider">
                     {
                         movie?.title
                     }
                 </Text>
                 {
                     movie?.id ? (
-                        <Text className="text-white font-semibold text-base text-center">
+                        <Text className="text-white font-pregular text-base text-center">
                             {movie?.status} • {movie?.release_date?.split("-")[0]} • {movie.runtime} min
                         </Text>
                     ) : null
@@ -88,14 +89,14 @@ export default function MovieScreen() {
                         movie?.genres?.map((genre, index) => {
                             let showDot = index + 1 != movie.genres.length;
                             return (
-                                <Text key={index} className="text-white font-semibold text-base text-center"  >
+                                <Text key={index} className="text-white font-pregular text-base text-center"  >
                                     {genre?.name} {showDot ? " •" : null}
                                 </Text>
                             )
                         })
                     }
                 </View>
-                <Text className="text-white mx-4 tracking-wide">
+                <Text className="text-neutral-400 font-pregular mx-4 tracking-wide">
                     {
                         movie?.overview
                     }

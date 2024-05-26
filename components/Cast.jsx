@@ -1,12 +1,15 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native"
 import React from "react"
 import { image185 } from "../api/moviedb";
+import { useRouter } from "expo-router";
 
-export default function Cast({ cast, navigation }) {
+export default function Cast({ cast }) {
+
+    const router = useRouter();
 
     return (
         <View className="my-6">
-            <Text className="text-white text-lg mx-4 mb-5">
+            <Text className="text-white text-lg font-pregular mx-4 mb-5">
                 Casting
             </Text>
             <ScrollView
@@ -14,12 +17,16 @@ export default function Cast({ cast, navigation }) {
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={{ paddingHorizontal: 15 }}>
                 {
-                    cast && cast.map((person, index) => {
+                    cast && cast.map((person) => {
                         return (
                             <TouchableOpacity
-                                key={index}
-                                className="mr-4 items-center"
-                                onPress={() => navigation.navigate("Person", person)}
+                                key={person.id}
+                                onPress={() => {
+                                    router.push({
+                                        pathname: 'personscreen',
+                                        params: { person_id: person.id }
+                                    })
+                                }}
                             >
                                 <View className="overflow-hidden rounded-full h-20 w-20 items-center border border-neutral-500">
                                     <Image
@@ -28,12 +35,12 @@ export default function Cast({ cast, navigation }) {
                                     />
                                 </View>
 
-                                <Text className="text-white text-xs mt-1">
+                                <Text className="text-white font-pregular text-xs mt-1">
                                     {
                                         person?.character.length > 10 ? person?.character.slice(0, 10) + "..." : person?.character
                                     }
                                 </Text>
-                                <Text className="text-neutral-400 text-xs mt-1">
+                                <Text className="text-neutral-400 font-pregular text-xs mt-1">
                                     {
                                         person?.original_name.length > 10 ? person?.original_name.slice(0, 10) + "..." : person?.original_name
                                     }

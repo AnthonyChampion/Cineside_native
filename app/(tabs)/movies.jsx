@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, TextInput, Image, TouchableOpacity, TouchableWithoutFeedback, Dimensions } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { router, useNavigation } from 'expo-router';
+import { useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
 import { image500, searchMovies } from '../../api/moviedb';
 import { icons } from '../../constants';
 
@@ -10,6 +10,11 @@ const { width, height } = Dimensions.get("window");
 export default function Movies() {
     const navigation = useNavigation();
     const [results, setResults] = useState([]);
+
+    const { movie_id } = useLocalSearchParams();
+
+    const router = useRouter();
+
     const handleSearch = value => {
         if (value && value.length > 2) {
             searchMovies({
@@ -55,20 +60,25 @@ export default function Movies() {
                     <Text className="text-white text-center font-pregular ml-1">Resultats ({results.length})</Text>
                     <View className="flex-row justify-between flex-wrap">
                         {
-                            results.map((item, index) => {
+                            results.map((movie) => {
                                 return (
                                     <TouchableWithoutFeedback
-                                        key={index}
-                                        onPress={() => router.push("/moviescreen", item)}>
+                                        key={movie.id}
+                                        onPress={() => {
+                                            router.push({
+                                                pathname: 'moviescreen',
+                                                params: { movie_id: movie.id }
+                                            })
+                                        }}>
 
                                         <View className="space-y-2 mb-4">
                                             <Image className="rounded-3xl"
-                                                source={{ uri: image500(item?.poster_path) }}
+                                                source={{ uri: image500(movie.poster_path) }}
                                                 style={{ width: width * 0.44, height: height * 0.3 }}
                                             />
                                             <Text className="text-white font-pregular ml-1 text-center">
                                                 {
-                                                    item?.title.length > 22 ? item?.title.slice(0, 22) + "..." : item?.title
+                                                    movie.title.length > 22 ? movie.title.slice(0, 22) + "..." : movie.title
                                                 }
                                             </Text>
                                         </View>
