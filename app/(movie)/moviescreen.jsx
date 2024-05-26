@@ -6,13 +6,11 @@ import { fetchMovieCredits, fetchMovieDetails, fetchSimilarMovies, image500 } fr
 import Cast from "../../components/Cast";
 import MovieList from "../../components/MovieList";
 import { icons } from "../../constants";
-import { useGlobalSearchParams, useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 
 var { width, height } = Dimensions.get("window");
 
 export default function MovieScreen() {
-
-    const movie_id = useGlobalSearchParams();
 
     const [isFavourite, toggleFavourite] = useState(false);
     const navigation = useNavigation();
@@ -20,37 +18,35 @@ export default function MovieScreen() {
     const [similarMovies, setSimilarMovies] = useState([]);
     const [movie, setMovie] = useState({});
 
+    const { movie_id } = useLocalSearchParams();
 
-    // useEffect(() => {
-    //     getMovieDetails(movie_id);
-    //     getMovieCredits(movie_id);
-    //     getSimilarMovies(movie_id);
-    // }, []);
+    useEffect(() => {
+        getMovieDetails(movie_id);
+        getMovieCredits(movie_id);
+        getSimilarMovies(movie_id);
+    }, []);
 
-    // const getMovieDetails = async id => {
-    //     const data = await fetchMovieDetails(id);
-    //     if (data) setMovie(data);
-    // }
+    const getMovieDetails = async id => {
+        const data = await fetchMovieDetails(id);
+        if (data) setMovie(data);
+    }
 
-    // const getMovieCredits = async id => {
-    //     const data = await fetchMovieCredits(id);
-    //     if (data && data.cast) setCast(data.cast);
-    // }
+    const getMovieCredits = async id => {
+        const data = await fetchMovieCredits(id);
+        if (data && data.cast) setCast(data.cast);
+    }
 
-    // const getSimilarMovies = async id => {
-    //     const data = await fetchSimilarMovies(id);
-    //     if (data && data.results) setSimilarMovies(data.results);
-    // }
+    const getSimilarMovies = async id => {
+        const data = await fetchSimilarMovies(id);
+        if (data && data.results) setSimilarMovies(data.results);
+    }
     return (
         <ScrollView
             contentContainerStyle={{ paddingBottom: 38 }}
-            className="flex-1 bg-neutral-900"
+            className="flex-1 bg-zinc-900"
         >
             <View className="w-full">
-                <Text className="text-white">
-                    {movie_id}
-                </Text>
-                {/* <SafeAreaView className={"absolute z-20 w-full flex-row justify-between items-center px-4"}>
+                <SafeAreaView className={"absolute z-20 w-full flex-row justify-between items-center px-4"}>
                     <TouchableOpacity onPress={() => navigation.goBack()} className="rounded-xl p-1 mt-12" >
                         <Image source={icons.lefticon} className="w-6 h-6" />
                     </TouchableOpacity>
@@ -71,9 +67,9 @@ export default function MovieScreen() {
                         end={{ x: 0.5, y: 1 }}
                         className="absolute bottom-0"
                     />
-                </View> */}
+                </View>
 
-                {/* </View>
+            </View>
             <View style={{ margintTop: -(height * 0.09) }} className="space-y-3">
                 <Text className="text-white text-center text-3xl font-bold tracking-wider">
                     {
@@ -103,10 +99,10 @@ export default function MovieScreen() {
                     {
                         movie?.overview
                     }
-                </Text>*/}
+                </Text>
             </View>
-            {/* {cast.length > 0 && <Cast navigation={navigation} cast={cast} />} */}
-            {/* {similarMovies.length > 0 && <MovieList title="Films similaires" data={similarMovies} />} */}
+            {cast.length > 0 && <Cast navigation={navigation} cast={cast} />}
+            {similarMovies.length > 0 && <MovieList title="Films similaires" data={similarMovies} />}
         </ScrollView>
     )
 }

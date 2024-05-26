@@ -1,13 +1,13 @@
 import { View, Image, TouchableWithoutFeedback, Dimensions, ScrollView } from 'react-native'
 import React from 'react'
 import { image500 } from '../api/moviedb';
-import { router } from 'expo-router';
+import { useRouter } from 'expo-router';
 
 
 var { width, height } = Dimensions.get("window");
 
 export default function TrendingMovies({ data }) {
-
+    const router = useRouter();
     return (
         <ScrollView
             horizontal
@@ -19,7 +19,10 @@ export default function TrendingMovies({ data }) {
                     return (
                         <TouchableWithoutFeedback
                             key={movie.id}
-                            onPress={() => router.navigate("moviescreen")}
+                            onPress={() => router.push({
+                                pathname: 'moviescreen',
+                                params: { movie_id: movie.id }
+                            })}
                         >
                             <View className="space-y-1 mr-4">
                                 <Image

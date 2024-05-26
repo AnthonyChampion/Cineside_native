@@ -1,11 +1,13 @@
 import { View, Text, TouchableOpacity, ScrollView, TouchableWithoutFeedback, Image, Dimensions } from "react-native"
 import React from "react"
 import { image185 } from "../api/moviedb";
-import { router } from "expo-router";
+import { useRouter } from 'expo-router';
 
 var { width, height } = Dimensions.get("window");
 
+
 export default function MovieList({ title, data }) {
+    const router = useRouter();
 
     return (
         <View className=" mt-4 space-y-4">
@@ -28,7 +30,12 @@ export default function MovieList({ title, data }) {
                         return (
                             <TouchableWithoutFeedback
                                 key={movie.id}
-                                onPress={() => router.push("/moviescreen", movie_id)}
+                                onPress={() => {
+                                    router.push({
+                                        pathname: 'moviescreen',
+                                        params: { movie_id: movie.id }
+                                    })
+                                }}
                             >
                                 <View className="space-y-1 mr-4">
                                     <Image
@@ -46,6 +53,6 @@ export default function MovieList({ title, data }) {
                 }
 
             </ScrollView>
-        </View>
+        </View >
     )
 }
