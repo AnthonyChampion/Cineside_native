@@ -4,7 +4,7 @@ import { ChevronLeftIcon } from "react-native-heroicons/outline";
 import { HeartIcon } from "react-native-heroicons/solid";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
-import { fetchPersonDetails, fetchPersonMovies, image342 } from "../../api/moviedb";
+import { fetchPersonDetails, fetchPersonMovies, image500 } from "../../api/moviedb";
 import MovieList from "../../components/MovieList";
 import { useLocalSearchParams } from "expo-router";
 
@@ -38,11 +38,11 @@ export default function PersonScreen() {
         <ScrollView className="flex-1 bg-neutral-900" contentContainerStyle={{ paddingBottom: 20 }}>
 
             <SafeAreaView className={"z-20 w-full flex-row justify-between items-center px-4"}>
-                <TouchableOpacity onPress={() => navigation.goBack()} className="rounded-xl p-1 mt-12" >
+                <TouchableOpacity onPress={() => navigation.goBack()} className="rounded-xl p-1 mt-4" >
                     <ChevronLeftIcon size="28" strokeWidth={2.5} color="white" />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => toggleFavourite(!isFavourite)} className="mt-12">
-                    <HeartIcon size="35" color={isFavourite ? "yellow" : "white"} />
+                <TouchableOpacity onPress={() => toggleFavourite(!isFavourite)} className="mt-4">
+                    <HeartIcon size="35" color={isFavourite ? "#08d474" : "white"} />
                 </TouchableOpacity>
             </SafeAreaView>
 
@@ -58,7 +58,7 @@ export default function PersonScreen() {
                 >
                     <View className="items-center rounded-full overflow-hidden h-72 w-72 border-2 border-neutral-500">
                         <Image
-                            source={{ uri: image342(person?.profile_path) }}
+                            source={{ uri: image500(person?.profile_path) }}
                             style={{
                                 height: height * 0.43, width: width * 0.74
                             }}

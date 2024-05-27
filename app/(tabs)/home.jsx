@@ -40,14 +40,20 @@ export default function Home() {
                             <Text className="text-white font-pmedium text-sm pl-4">
                                 Bienvenue sur
                             </Text>
-                            <Text className="text-white font-psemibold text-2xl text-yellow-400 pl-4">
-                                Cineside
-                            </Text>
+                            <View className="flex-row">
+                                <Text className="text-[#08d474] font-psemibold text-2xl pl-4">
+                                    Cine
+                                </Text>
+                                <Text className="text-white font-psemibold text-2xl">
+                                    side
+                                </Text>
+                            </View>
+
                         </View>
                         <View className="mt-1.5 pr-2">
                             <Image
-                                source={images.logo}
-                                className="w-14 h-12"
+                                source={images.tmdb}
+                                className="w-12 h-10"
                                 resizeMode='contain' />
                         </View>
                     </View>
@@ -56,7 +62,7 @@ export default function Home() {
                             <Text className="text-white text-lg font-pregular mb-3 pl-4">
                                 Sorties récentes
                             </Text>
-                            <Text className="text-yellow-400 text-s font-pregular mb-3 pr-4">
+                            <Text className="text-white text-s font-pregular mb-3 pr-4">
                                 Voir tout
                             </Text>
                         </View>

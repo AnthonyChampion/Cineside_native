@@ -5,9 +5,9 @@ import { LinearGradient } from "expo-linear-gradient";
 import { fetchMovieCredits, fetchMovieDetails, fetchSimilarMovies, image500 } from "../../api/moviedb";
 import Cast from "../../components/Cast";
 import MovieList from "../../components/MovieList";
-import { icons } from "../../constants";
 import { useLocalSearchParams } from "expo-router";
-import { ChevronLeftIcon, HeartIcon } from "react-native-heroicons/outline";
+import { ChevronLeftIcon } from "react-native-heroicons/outline";
+import { HeartIcon } from "react-native-heroicons/solid";
 
 var { width, height } = Dimensions.get("window");
 
@@ -52,7 +52,7 @@ export default function MovieScreen() {
                         <ChevronLeftIcon size="28" strokeWidth={2.5} color="white" />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => toggleFavourite(!isFavourite)} className="mt-12">
-                        <HeartIcon size="35" color={isFavourite ? "yellow" : "white"} />
+                        <HeartIcon size="35" color={isFavourite ? "#08d474" : "white"} />
                     </TouchableOpacity>
                 </SafeAreaView>
 

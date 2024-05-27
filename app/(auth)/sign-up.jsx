@@ -2,7 +2,6 @@ import { View, Text, ScrollView, Image } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { images } from "../../constants";
 import FormField from '../../components/FormField';
 import CustomButton from '../../components/CustomButton';
 import { Link } from 'expo-router';
@@ -25,9 +24,6 @@ export default function SignUp() {
         <SafeAreaView className="bg-zinc-900 h-full">
             <ScrollView>
                 <View className="w-full min-h-[85vh] justify-center px-4 my-6">
-                    <Image source={images.logo}
-                        resizeMode="contain"
-                        className="w-24 h-24" />
                     <Text className="text-2xl text-white text-semibold font-psemibold ">Enregistrez-vous !</Text>
                     <FormField
                         title="Nom d'utilisateur"
@@ -50,7 +46,7 @@ export default function SignUp() {
                     />
 
                     <CustomButton
-                        title="Enregistrez-vous"
+                        title="Validation"
                         handlePress={submit}
                         containerStyles="mt-7 h-14"
                         isLoading={isSubmitting} />
@@ -59,7 +55,7 @@ export default function SignUp() {
                         <Text className="text-lg text-gray-100 font-pregular">
                             Vous avez déja un compte ?
                         </Text>
-                        <Link href="/sign-in" className="text-s font-psemibold text-yellow-400">Connectez-vous</Link>
+                        <Link href="/sign-in" className="text-s font-psemibold text-[#08d474]">Connectez-vous</Link>
                     </View>
                 </View>
             </ScrollView>

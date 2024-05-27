@@ -6,7 +6,7 @@ export default function CustomButton({ title, handlePress, containerStyles, text
         <TouchableOpacity
             onPress={handlePress}
             activeOpacity={0.7}
-            className={`bg-yellow-400 rounded-xl h-10 justify-center items-center 
+            className={`bg-[#08d474] h-20 justify-center items-center 
             ${containerStyles} ${isLoading ? "opacity-50" : ""}`}
             disabled={isLoading}
         >

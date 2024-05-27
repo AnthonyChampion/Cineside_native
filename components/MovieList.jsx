@@ -15,7 +15,7 @@ export default function MovieList({ title, data }) {
                 <Text className="text-white text-lg font-pregular">{title}</Text>
 
                 <TouchableOpacity>
-                    <Text className="text-yellow-400 text-s font-pregular">Voir tout</Text>
+                    <Text className="text-white text-s font-pregular">Voir tout</Text>
                 </TouchableOpacity>
 
             </View>

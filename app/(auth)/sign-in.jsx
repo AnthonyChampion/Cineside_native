@@ -24,9 +24,6 @@ export default function SignIn() {
         <SafeAreaView className="bg-zinc-900 h-full">
             <ScrollView>
                 <View className="w-full min-h-[85vh] justify-center px-4 my-6">
-                    <Image source={images.logo}
-                        resizeMode="contain"
-                        className="w-24 h-24" />
                     <Text className="text-2xl text-white text-semibold font-psemibold ">Connectez-vous !</Text>
                     <FormField
                         title="Email"
@@ -52,7 +49,7 @@ export default function SignIn() {
                         <Text className="text-lg text-gray-100 font-pregular">
                             Vous n'avez-pas de compte ?
                         </Text>
-                        <Link href="/sign-up" className="text-s font-psemibold text-yellow-400">Enregistrez-vous !</Link>
+                        <Link href="/sign-up" className="text-s font-psemibold text-[#08d474]">Enregistrez-vous !</Link>
                     </View>
                 </View>
             </ScrollView>
