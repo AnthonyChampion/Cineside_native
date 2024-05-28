@@ -1,15 +1,13 @@
 import { View, Text, Image, ScrollView, SafeAreaView, TouchableOpacity, Dimensions } from "react-native"
 import React, { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
-import { LinearGradient } from "expo-linear-gradient";
-import { fetchMovieCredits, fetchMovieDetails, fetchSimilarMovies, image500 } from "../../api/moviedb";
+import { backdrop, fetchMovieCredits, fetchMovieDetails, fetchSimilarMovies } from "../../api/moviedb";
 import Cast from "../../components/Cast";
 import MovieList from "../../components/MovieList";
 import { useLocalSearchParams } from "expo-router";
-import { ChevronLeftIcon } from "react-native-heroicons/outline";
-import { HeartIcon } from "react-native-heroicons/solid";
+import { ChevronLeftIcon, FilmIcon } from "react-native-heroicons/outline";
+import { HeartIcon, StarIcon } from "react-native-heroicons/solid";
 
-var { width, height } = Dimensions.get("window");
 
 export default function MovieScreen() {
 
@@ -47,56 +45,63 @@ export default function MovieScreen() {
             className="flex-1 bg-zinc-900"
         >
             <View className="w-full">
-                <SafeAreaView className={"absolute z-20 w-full flex-row justify-between items-center px-4 py-2"}>
+                <SafeAreaView className={"absolute z-20 w-full flex-row justify-between items-center px-4"}>
                     <TouchableOpacity onPress={() => navigation.goBack()} className="rounded-xl p-1 mt-12" >
                         <ChevronLeftIcon size="28" strokeWidth={2.5} color="white" />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => toggleFavourite(!isFavourite)} className="mt-12">
-                        <HeartIcon size="35" color={isFavourite ? "#08d474" : "white"} />
-                    </TouchableOpacity>
-                </SafeAreaView>
 
+                </SafeAreaView>
                 <View>
                     <Image
-                        source={{ uri: image500(movie?.poster_path) }}
-                        style={{ width, height: height * 0.70 }}
-                    />
-                    <LinearGradient
-                        colors={["transparent", "rgba(23,23,23,0.8)", "rgba(23,23,23, 1)"]}
-                        style={{ width, height: height * 0.40 }}
-                        start={{ x: 0.5, y: 0 }}
-                        end={{ x: 0.5, y: 1 }}
-                        className="absolute bottom-0"
+                        source={{ uri: backdrop(movie?.backdrop_path) }}
+                        resizeMode="contain"
+                        className="w-auto h-[36vh]"
                     />
                 </View>
-
             </View>
-            <View style={{ margintTop: -(height * 0.09) }} className="space-y-3">
-                <Text className="text-white text-center text-2xl font-pregular tracking-wider">
+            <View className="space-y-3">
+                <Text className="text-white text-2xl font-pregular tracking-wider pl-4 -mt-6">
                     {
                         movie?.title
                     }
                 </Text>
                 {
                     movie?.id ? (
-                        <Text className="text-white font-pregular text-base text-center">
-                            {movie?.status} • {movie?.release_date?.split("-")[0]} • {movie.runtime} min
+                        <Text className="text-neutral-400 font-pregular text-s pl-4">
+                            {movie?.release_date?.split("-")[0]}  •  {movie.runtime} min
                         </Text>
                     ) : null
                 }
-                <View className="flex-row justify-center mx-4 space-x-2">
+                <View className="flex-row mx-4 space-x-2 items-center">
                     {
                         movie?.genres?.map((genre, index) => {
                             let showDot = index + 1 != movie.genres.length;
                             return (
-                                <Text key={index} className="text-white font-pregular text-base text-center"  >
+                                <Text key={index} className="text-white font-pregular text-[12px] text-center"  >
                                     {genre?.name} {showDot ? " •" : null}
                                 </Text>
                             )
                         })
                     }
                 </View>
-                <Text className="text-neutral-400 font-pregular mx-4 tracking-wide">
+                <View className="flex-row justify-around mb-4">
+                    <View className="flex-col items-center">
+                        <StarIcon size="30" color="white" />
+                        <Text className="text-neutral-400 text-s font-pregular">{Math.round((movie?.vote_average) * 100) / 100} / 10</Text>
+                    </View >
+                    <View className="flex-col items-center">
+                        <FilmIcon size="30" color="white" />
+                        <Text className="text-neutral-400 text-s font-pregular">Bande annonce</Text>
+                    </View>
+                    <TouchableOpacity onPress={() => toggleFavourite(!isFavourite)} className="pl-4 ">
+                        <View className="flex-col items-center">
+                            <HeartIcon size="30" color={isFavourite ? "#08d474" : "white"} />
+                            <Text className="text-neutral-400 text-s font-pregular">Favoris</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                <Text className="text-white font-pregular pl-4">Synopsis : </Text>
+                <Text className="text-neutral-400 text-justify font-pregular mx-4 tracking-wider">
                     {
                         movie?.overview
                     }
@@ -107,3 +112,4 @@ export default function MovieScreen() {
         </ScrollView>
     )
 }
+

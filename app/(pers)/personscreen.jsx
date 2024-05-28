@@ -51,7 +51,7 @@ export default function PersonScreen() {
                 <View className="flex-row justify-center mt-5"
                     style={{
                         shadowColor: "gray",
-                        shadowRadius: 40,
+                        shadowRadius: 0,
                         shadowOffset: { width: 0, height: 5 },
                         shadowOpacity: 1
                     }}
@@ -60,7 +60,7 @@ export default function PersonScreen() {
                         <Image
                             source={{ uri: image500(person?.profile_path) }}
                             style={{
-                                height: height * 0.43, width: width * 0.74
+                                height: height * 0.43, width: width * 0.70
                             }}
                         />
                     </View>

@@ -35,7 +35,7 @@ export default function App() {
                             <CustomButton
                                 title="Enregistrez-vous !"
                                 handlePress={() => router.push("/sign-up")}
-                                containerStyles="w-2/4 mt-10 bg-white" />
+                                containerStyles="w-2/4 mt-10 bg-[#059edf]" />
                         </View>
 
                     </View>

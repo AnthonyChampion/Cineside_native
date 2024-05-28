@@ -42,7 +42,7 @@ export default function SignIn() {
                     <CustomButton
                         title="Connexion"
                         handlePress={submit}
-                        containerStyles="mt-7 h-14"
+                        containerStyles="mt-7 h-14 rounded-2xl"
                         isLoading={isSubmitting} />
 
                     <View className="justify-center pt-5 flex-col gap-2">

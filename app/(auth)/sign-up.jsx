@@ -48,14 +48,14 @@ export default function SignUp() {
                     <CustomButton
                         title="Validation"
                         handlePress={submit}
-                        containerStyles="mt-7 h-14"
+                        containerStyles="mt-7 h-14 rounded-2xl bg-[#059edf]"
                         isLoading={isSubmitting} />
 
                     <View className="justify-center pt-5 flex-col gap-2">
                         <Text className="text-lg text-gray-100 font-pregular">
                             Vous avez déja un compte ?
                         </Text>
-                        <Link href="/sign-in" className="text-s font-psemibold text-[#08d474]">Connectez-vous</Link>
+                        <Link href="/sign-in" className="text-s font-psemibold text-[#059edf]">Connectez-vous</Link>
                     </View>
                 </View>
             </ScrollView>

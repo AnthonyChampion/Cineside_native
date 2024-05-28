@@ -18,6 +18,7 @@ const personMoviesEndpoint = id => `${apiBaseUrl}/person/${id}/movie_credits?api
 export const image500 = path => path ? `https://image.tmdb.org/t/p/w500${path}` : null;
 export const image342 = path => path ? `https://image.tmdb.org/t/p/w342${path}` : null;
 export const image185 = path => path ? `https://image.tmdb.org/t/p/w185${path}` : null;
+export const backdrop = path => path ? `https://image.tmdb.org/t/p/original${path}` : null;
 
 const apiCall = async (endpoint, params) => {
     const options = {

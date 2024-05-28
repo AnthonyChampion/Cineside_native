@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
 import { image500, searchMovies } from '../../api/moviedb';
 import { icons } from '../../constants';
+import { StarIcon } from 'react-native-heroicons/solid';
 
 const { width, height } = Dimensions.get("window");
 
@@ -36,12 +37,12 @@ export default function Movies() {
         <SafeAreaView className="bg-zinc-900 h-full">
             <ScrollView className="my-6 pl-4 ">
                 <Text className="text-white text-center text-lg font-pregular pb-4">Films</Text>
-                <View className="mx-4 mb-3 flex-row justify-between items-center border border-black-100 bg-zinc-800 rounded-full">
+                <View className="mx-4 mb-3 flex-row justify-between items-center border border-black-100 bg-white rounded-full">
                     <TextInput
                         onChangeText={handleSearch}
                         placeholder="Recherchez un film"
-                        placeholderTextColor={"lightgray"}
-                        className="pl-6 flex-1 text-base font-pregular text-white trancking-wider" />
+                        placeholderTextColor={"black"}
+                        className="pl-6 flex-1 text-base font-pregular text-black trancking-wider" />
                     <TouchableOpacity
                         onPress={() => navigation.navigate("moviesreen")}
                         className="rounded-full p-3 m-1">
@@ -49,7 +50,7 @@ export default function Movies() {
                             source={icons.search}
                             className="w-5 h-5"
                             resizeMode='contain'
-                            tintColor={"lightgray"}
+                            tintColor={"black"}
                         />
                     </TouchableOpacity>
                 </View>
@@ -58,7 +59,7 @@ export default function Movies() {
                     contentContainerStyle={{ paddingHorizontal: 15 }}
                     className="space-y-3">
                     <Text className="text-white text-center font-pregular ml-1">Resultats ({results.length})</Text>
-                    <View className="flex-row justify-between flex-wrap">
+                    <View className="flex-col justify-between flex-wrap">
                         {
                             results.map((movie) => {
                                 return (
@@ -71,16 +72,29 @@ export default function Movies() {
                                             })
                                         }}>
 
-                                        <View className="space-y-2 mb-4">
+                                        <View className="space-y-2 mb-4 flex-row w-[55vw] ">
                                             <Image className="rounded-3xl"
                                                 source={{ uri: image500(movie.poster_path) }}
-                                                style={{ width: width * 0.44, height: height * 0.3 }}
+                                                style={{ width: width * 0.30, height: height * 0.20 }}
+                                                resizeMode='cover'
                                             />
-                                            <Text className="text-white font-pregular ml-1 text-center">
-                                                {
-                                                    movie.title.length > 22 ? movie.title.slice(0, 22) + "..." : movie.title
-                                                }
-                                            </Text>
+                                            <View className="flex-col ml-4 justify-center space-y-2">
+                                                <Text className="text-white font-pregular text-lg ">
+                                                    {
+                                                        movie.title
+                                                    }
+                                                </Text>
+                                                <Text className="text-neutral-400 font-pregular ml-1 ">
+                                                    {movie?.release_date?.split("-")[0]}
+                                                </Text>
+                                                <View className=" flex-row ">
+                                                    <StarIcon size="20" color="white" />
+                                                    <Text className="text-[#08d474] font-pregular ml-1">
+                                                        {Math.round((movie?.vote_average) * 100) / 100} / 10
+                                                    </Text>
+                                                </View>
+                                            </View>
+
                                         </View>
                                     </TouchableWithoutFeedback>
                                 )

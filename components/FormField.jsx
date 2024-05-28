@@ -12,7 +12,7 @@ export default function FormField({ title, value, placeholder, handleChangeText,
                 <TextInput className="flex-1 text-white font-psemibold"
                     value={value}
                     placeholder={placeholder}
-                    placeholderTextColor="#08d474"
+                    placeholderTextColor="white"
                     onChangeText={handleChangeText}
                     secureTextEntry={title === "Password" && !showPassword}
                 />

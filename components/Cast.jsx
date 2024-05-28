@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native"
 import React from "react"
-import { image185 } from "../api/moviedb";
+import { image500 } from "../api/moviedb";
 import { useRouter } from "expo-router";
 
 export default function Cast({ cast }) {
@@ -28,10 +28,10 @@ export default function Cast({ cast }) {
                                     })
                                 }}
                             >
-                                <View className="overflow-hidden rounded-full h-20 w-20 items-center border border-neutral-500">
+                                <View className="overflow-hidden rounded-full h-30 w-30 items-center border border-neutral-500 mr-2">
                                     <Image
                                         className="rounded-2xl h-24 w-20"
-                                        source={{ uri: image185(person?.profile_path) }}
+                                        source={{ uri: image500(person?.profile_path) }}
                                     />
                                 </View>
 
