@@ -1,7 +1,6 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 import { Tabs, Redirect } from 'expo-router';
-
 import { icons } from "../../constants";
 import { StatusBar } from 'expo-status-bar';
 
@@ -72,13 +71,13 @@ export default function TabsLayout() {
                     }} />
                 <Tabs.Screen name="profile"
                     options={{
-                        title: "Profil",
+                        title: "Profile",
                         headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
                             <TabIcon
                                 icon={icons.profile}
                                 color={color}
-                                name="Profil"
+                                name="Profile"
                                 focused={focused} />
                         )
                     }} />

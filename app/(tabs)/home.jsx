@@ -5,6 +5,10 @@ import { images } from "../../constants";
 import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcommingMovies } from '../../api/moviedb';
 import TrendingMovies from '../../components/TrendingMovies';
 import MovieList from '../../components/MovieList';
+import { Button } from 'react-native';
+import { Link, router } from 'expo-router';
+import CustomButton from '../../components/CustomButton';
+import { TouchableOpacity } from 'react-native';
 
 export default function Home() {
 
@@ -50,10 +54,10 @@ export default function Home() {
                             </View>
 
                         </View>
-                        <View className="mt-1.5 pr-2">
+                        <View className="mt-1.5 pr-3">
                             <Image
-                                source={images.tmdb}
-                                className="w-12 h-10"
+                                source={images.cinelogo}
+                                className="w-9 h-9"
                                 resizeMode='contain' />
                         </View>
                     </View>
@@ -62,9 +66,16 @@ export default function Home() {
                             <Text className="text-white text-lg font-pregular mb-3 pl-4">
                                 Sorties récentes
                             </Text>
-                            <Text className="text-white text-s font-pregular mb-3 pr-4">
-                                Voir tout
-                            </Text>
+                            <TouchableOpacity
+                                onPress={() => {
+                                    router.push({
+                                        pathname: "allmoviescreen"
+                                    })
+                                }}
+                            >
+                                <Text className="text-s font-pregular text-white mb-3 pr-4">Voir tout</Text>
+                            </TouchableOpacity>
+
                         </View>
                         <TrendingMovies data={trending} />
                     </View>

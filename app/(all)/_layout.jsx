@@ -1,15 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
 import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
+import React from 'react'
 
-export default function PersLayout() {
-
+export default function AllLayout() {
     return (
         <>
             <Stack>
                 <Stack.Screen
-                    name={"personscreen"}
+                    name={"allmoviescreen"}
                     options={{
                         headerShown: false,
                     }} />
@@ -18,3 +16,4 @@ export default function PersLayout() {
         </>
     )
 }
+

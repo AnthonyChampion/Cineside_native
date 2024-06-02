@@ -40,6 +40,7 @@ export default function RootLayout() {
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="(movie)" options={{ headerShown: false }} />
             <Stack.Screen name="(pers)" options={{ headerShown: false }} />
+            <Stack.Screen name="(all)" options={{ headerShown: false }} />
         </Stack>
     )
 }

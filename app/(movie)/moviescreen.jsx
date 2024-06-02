@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView, SafeAreaView, TouchableOpacity, Dimensions } from "react-native"
+import { View, Text, Image, ScrollView, SafeAreaView, TouchableOpacity } from "react-native"
 import React, { useEffect, useState } from "react"
 import { useNavigation } from "@react-navigation/native"
 import { backdrop, fetchMovieCredits, fetchMovieDetails, fetchSimilarMovies } from "../../api/moviedb";
@@ -72,7 +72,7 @@ export default function MovieScreen() {
                         </Text>
                     ) : null
                 }
-                <View className="flex-row mx-4 space-x-2 items-center">
+                <View className="flex-row mx-4 space-x-2 items-center mb-2">
                     {
                         movie?.genres?.map((genre, index) => {
                             let showDot = index + 1 != movie.genres.length;
@@ -84,10 +84,10 @@ export default function MovieScreen() {
                         })
                     }
                 </View>
-                <View className="flex-row justify-around mb-4">
+                <View className="flex-row justify-around mb-2">
                     <View className="flex-col items-center">
                         <StarIcon size="30" color="white" />
-                        <Text className="text-neutral-400 text-s font-pregular">{Math.round((movie?.vote_average) * 100) / 100} / 10</Text>
+                        <Text className="text-[#08d474] text-s font-pregular">{Math.round((movie?.vote_average) * 100) / 100} / 10</Text>
                     </View >
                     <View className="flex-col items-center">
                         <FilmIcon size="30" color="white" />

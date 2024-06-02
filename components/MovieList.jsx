@@ -14,8 +14,14 @@ export default function MovieList({ title, data }) {
             <View className="mx-4 flex-row justify-between items-center">
                 <Text className="text-white text-lg font-pregular">{title}</Text>
 
-                <TouchableOpacity>
-                    <Text className="text-white text-s font-pregular">Voir tout</Text>
+                <TouchableOpacity
+                    onPress={() => {
+                        router.push({
+                            pathname: "allmoviescreen"
+                        })
+                    }}
+                >
+                    <Text className="text-s font-pregular text-white">Voir tout</Text>
                 </TouchableOpacity>
 
             </View>
