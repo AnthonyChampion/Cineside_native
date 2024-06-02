@@ -6,7 +6,7 @@ import { useRouter } from 'expo-router';
 var { width, height } = Dimensions.get("window");
 
 
-export default function MovieList({ title, data }) {
+export default function MovieList({ title, data, from }) {
     const router = useRouter();
 
     return (
@@ -17,7 +17,8 @@ export default function MovieList({ title, data }) {
                 <TouchableOpacity
                     onPress={() => {
                         router.push({
-                            pathname: "allmoviescreen"
+                            pathname: "allmoviescreen",
+                            params: { from: from }
                         })
                     }}
                 >

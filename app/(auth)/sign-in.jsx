@@ -49,7 +49,7 @@ export default function SignIn() {
                         <Text className="text-lg text-gray-100 font-pregular">
                             Vous n'avez-pas de compte ?
                         </Text>
-                        <Link href="/sign-up" className="text-s font-psemibold text-[#08d474]">Enregistrez-vous !</Link>
+                        <Link href="/sign-up" className="text-s font-psemibold text-[#08d474]">Connectez-vous !</Link>
                     </View>
                 </View>
             </ScrollView>

@@ -21,7 +21,7 @@ export default function TrendingMovies({ data }) {
                             key={movie.id}
                             onPress={() => router.push({
                                 pathname: 'moviescreen',
-                                params: { movie_id: movie.id }
+                                params: { from: "TrendingMovies" }
                             })}
                         >
                             <View className="space-y-1 mr-4">

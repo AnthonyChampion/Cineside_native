@@ -29,11 +29,11 @@ export default function App() {
                     <Link href="/home" className="absolute bottom-0 mb-24 text-white text-lg font-pregular">Continuez en tant qu'invité</Link>
                     <View className="absolute bottom-2 flex-row">
                         <CustomButton
-                            title="Connectez-vous !"
+                            title="Connection"
                             handlePress={() => router.push("/sign-in")}
                             containerStyles="w-30 mt-10 mr-1 px-2" />
                         <CustomButton
-                            title="Enregistrez-vous !"
+                            title="Inscription"
                             handlePress={() => router.push("/sign-up")}
                             containerStyles="w-30 mt-10 ml-1 px-2 bg-[#059edf]" />
                     </View>

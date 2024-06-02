@@ -5,12 +5,12 @@ import { images } from "../../constants";
 import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcommingMovies } from '../../api/moviedb';
 import TrendingMovies from '../../components/TrendingMovies';
 import MovieList from '../../components/MovieList';
-import { Button } from 'react-native';
-import { Link, router } from 'expo-router';
-import CustomButton from '../../components/CustomButton';
+import { useRouter } from 'expo-router';
 import { TouchableOpacity } from 'react-native';
 
 export default function Home() {
+
+    const router = useRouter();
 
     const [trending, setTrending] = useState([]);
     const [upcoming, setUpcoming] = useState([]);
@@ -69,7 +69,8 @@ export default function Home() {
                             <TouchableOpacity
                                 onPress={() => {
                                     router.push({
-                                        pathname: "allmoviescreen"
+                                        pathname: "allmoviescreen",
+                                        params: { from: "TrendingMovies" }
                                     })
                                 }}
                             >
@@ -80,10 +81,10 @@ export default function Home() {
                         <TrendingMovies data={trending} />
                     </View>
                     <View className="w-full flex-1 pt-5 pb-8">
-                        <MovieList title="Films en tendance" data={upcoming} />
+                        <MovieList from="Upcoming" title="Films en tendance" data={upcoming} />
                     </View>
                     <View className="w-full flex-1 pt-5 pb-8">
-                        <MovieList title="Top TMDb" data={topRated} />
+                        <MovieList from="TopRated" title="Top TMDb" data={topRated} />
                     </View>
                 </View>
             </ScrollView>
