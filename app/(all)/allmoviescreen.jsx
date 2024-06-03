@@ -1,4 +1,4 @@
-import { useLocalSearchParams, useNavigation } from 'expo-router'
+import { router, useLocalSearchParams, useNavigation } from 'expo-router'
 import React, { useState } from 'react'
 import { Dimensions, Image, TouchableOpacity, View } from 'react-native'
 import { ScrollView } from 'react-native'
@@ -7,6 +7,7 @@ import { ChevronLeftIcon, StarIcon } from 'react-native-heroicons/solid'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcommingMovies, image500 } from '../../api/moviedb'
 import { TouchableWithoutFeedback } from 'react-native'
+import { images } from '../../constants'
 
 var { width, height } = Dimensions.get("window");
 
@@ -16,44 +17,62 @@ export default function AllMovieScreen() {
 
     const { from } = useLocalSearchParams();
     const [data, setData] = useState([]);
+    const [page, setPage] = useState(1);
 
     const getTrendingMovies = async () => {
-        const data = await fetchTrendingMovies();
+        const data = await fetchTrendingMovies(page);
         if (data && data.results) setData(data.results);
     }
     const getUpcomingMovies = async () => {
-        const data = await fetchUpcommingMovies();
+        const data = await fetchUpcommingMovies(page);
         if (data && data.results) setData(data.results);
     }
     const getTopRatedMovies = async () => {
-        const data = await fetchTopRatedMovies();
+        const data = await fetchTopRatedMovies(page);
         if (data && data.results) setData(data.results);
     }
 
     switch (from) {
         case "TrendingMovies":
-            getTrendingMovies();
+            getTrendingMovies(page);
             break;
         case "Upcoming":
-            getUpcomingMovies();
+            getUpcomingMovies(page);
             break;
         case "TopRated":
-            getTopRatedMovies();
+            getTopRatedMovies(page);
             break;
         default:
-            getTrendingMovies();
+            getTrendingMovies(page);
             break;
     }
 
+    function nextPage() {
+        setPage(page + 1);
+    }
+
+    function previousPage() {
+        setPage(page - 1);
+    }
 
 
     return (
         <SafeAreaView className="bg-zinc-900 h-full">
-            <ScrollView className="my-6 pl-4">
+            <ScrollView className="my-7 pl-4">
                 <Text className="text-white text-center text-lg font-pregular pb-8">Tous les films</Text>
-                <TouchableOpacity onPress={() => navigation.goBack()} className="absolute p-1" >
-                    <ChevronLeftIcon size="28" strokeWidth={2.5} color="white" />
+                <TouchableOpacity onPress={() => navigation.goBack()} className="absolute -pl-1 -mt-1" >
+                    <Image source={images.cinelogo} className="w-9 h-9" resizeMode='contain' />
                 </TouchableOpacity>
+                <View className="w-full flex flex-row justify-between pb-8 pt-2">
+                    <TouchableOpacity className="rounded-xl border border-zinc-500"
+                        onPress={previousPage}>
+                        <Text className="text-white p-2 w-24 text-center text-s font-plight">Précédent</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity className="rounded-xl border border-zinc-500 mr-4"
+                        onPress={nextPage}>
+                        <Text className="text-white p-2 w-24 text-center text-s font-plight">Suivant</Text>
+                    </TouchableOpacity>
+                </View>
 
                 {data.map((movie) => {
                     return (

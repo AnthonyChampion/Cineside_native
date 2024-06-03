@@ -34,14 +34,14 @@ const apiCall = async (endpoint, params) => {
         return {}
     }
 }
-export const fetchTrendingMovies = () => {
-    return apiCall(trendingMoviesEndpoint);
+export const fetchTrendingMovies = (page = 1) => {
+    return apiCall(trendingMoviesEndpoint, { language: "fr-FR", page: `${page}` });
 }
-export const fetchUpcommingMovies = () => {
-    return apiCall(upcomingMoviesEndpoint);
+export const fetchUpcommingMovies = (page = 1) => {
+    return apiCall(upcomingMoviesEndpoint, { language: "fr-FR", page: `${page}` });
 }
-export const fetchTopRatedMovies = () => {
-    return apiCall(topRatedMoviesEndpoint);
+export const fetchTopRatedMovies = (page = 1) => {
+    return apiCall(topRatedMoviesEndpoint, { language: "fr-FR", page: `${page}` });
 }
 export const searchMovies = params => {
     return apiCall(searchMoviesEndPoint, params);
