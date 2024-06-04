@@ -52,7 +52,9 @@ export default function AllMovieScreen() {
     }
 
     function previousPage() {
-        setPage(page - 1);
+        if (page > 1) {
+            setPage(page - 1);
+        }
     }
 
 
@@ -64,10 +66,12 @@ export default function AllMovieScreen() {
                     <Image source={images.cinelogo} className="w-9 h-9" resizeMode='contain' />
                 </TouchableOpacity>
                 <View className="w-full flex flex-row justify-between pb-8 pt-2">
-                    <TouchableOpacity className="rounded-xl border border-zinc-500"
-                        onPress={previousPage}>
-                        <Text className="text-white p-2 w-24 text-center text-s font-plight">Précédent</Text>
-                    </TouchableOpacity>
+                    {page > 1 && (
+                        <TouchableOpacity className="rounded-xl border border-zinc-500"
+                            onPress={previousPage}>
+                            <Text className="text-white p-2 w-24 text-center text-s font-plight">Précédent</Text>
+                        </TouchableOpacity>
+                    )}
                     <TouchableOpacity className="rounded-xl border border-zinc-500 mr-5"
                         onPress={nextPage}>
                         <Text className="text-white p-2 w-24 text-center text-s font-plight">Suivant</Text>
