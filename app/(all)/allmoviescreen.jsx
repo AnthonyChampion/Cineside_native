@@ -58,7 +58,7 @@ export default function AllMovieScreen() {
 
     return (
         <SafeAreaView className="bg-zinc-900 h-full">
-            <ScrollView className="my-7 pl-4">
+            <ScrollView className="my-6 pl-5">
                 <Text className="text-white text-center text-lg font-pregular pb-8">Tous les films</Text>
                 <TouchableOpacity onPress={() => navigation.goBack()} className="absolute -pl-1 -mt-1" >
                     <Image source={images.cinelogo} className="w-9 h-9" resizeMode='contain' />
@@ -68,7 +68,7 @@ export default function AllMovieScreen() {
                         onPress={previousPage}>
                         <Text className="text-white p-2 w-24 text-center text-s font-plight">Précédent</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity className="rounded-xl border border-zinc-500 mr-4"
+                    <TouchableOpacity className="rounded-xl border border-zinc-500 mr-5"
                         onPress={nextPage}>
                         <Text className="text-white p-2 w-24 text-center text-s font-plight">Suivant</Text>
                     </TouchableOpacity>
@@ -85,14 +85,14 @@ export default function AllMovieScreen() {
                                 })
                             }}>
 
-                            <View className="space-y-2 mb-4 mt-2 flex-row w-[55vw] ">
+                            <View className="mb-4 mt-2 flex-row w-[90vw] h-44 justify-center ">
                                 <Image className="rounded-3xl"
                                     source={{ uri: image500(movie.poster_path) }}
                                     style={{ width: width * 0.30, height: height * 0.20 }}
                                     resizeMode='cover'
                                 />
-                                <View className="flex-col ml-4 justify-center space-y-2">
-                                    <Text className="text-white font-pregular text-lg ">
+                                <View className="w-[65%] h-28 flex-col pl-3 pt-1">
+                                    <Text className="text-white font-pregular text-sm ">
                                         {
                                             movie.title
                                         }
@@ -100,14 +100,13 @@ export default function AllMovieScreen() {
                                     <Text className="text-neutral-400 font-pregular ml-1 ">
                                         {movie?.release_date?.split("-")[0]}
                                     </Text>
-                                    <View className=" flex-row ">
-                                        <StarIcon size="20" color="white" />
-                                        <Text className="text-[#08d474] font-pregular ml-1">
-                                            {Math.round((movie?.vote_average) * 100) / 100} / 10
-                                        </Text>
-                                    </View>
-                                </View>
 
+                                    <Text className="text-white text-xs font-plight"
+                                        numberOfLines={6}>
+                                        {movie.overview ? movie.overview : "N/A"}
+
+                                    </Text>
+                                </View>
                             </View>
                         </TouchableWithoutFeedback>
                     )

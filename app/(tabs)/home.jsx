@@ -38,7 +38,7 @@ export default function Home() {
     return (
         <SafeAreaView className="bg-zinc-900 h-full">
             <ScrollView>
-                <View className="my-6">
+                <View className="my-3">
                     <View className="justify-between items-start flex-row mb-6">
                         <View>
                             <Text className="text-white font-pmedium text-sm pl-4">

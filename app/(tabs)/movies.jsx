@@ -35,7 +35,7 @@ export default function Movies() {
 
     return (
         <SafeAreaView className="bg-zinc-900 h-full">
-            <ScrollView className="my-6 pl-4 ">
+            <ScrollView className="my-6 pl-2 ">
                 <Text className="text-white text-center text-lg font-pregular pb-4">Films</Text>
                 <View className="mx-4 mb-3 flex-row justify-between items-center border border-black-100 bg-white rounded-full">
                     <TextInput
@@ -45,7 +45,7 @@ export default function Movies() {
                         className="pl-6 flex-1 text-base font-pregular text-black trancking-wider" />
                     <TouchableOpacity
                         onPress={() => navigation.navigate("moviesreen")}
-                        className="rounded-full p-3 m-1">
+                        className="rounded-full p-3">
                         <Image
                             source={icons.search}
                             className="w-5 h-5"
@@ -72,14 +72,14 @@ export default function Movies() {
                                             })
                                         }}>
 
-                                        <View className="space-y-2 mb-4 flex-row w-[55vw] ">
+                                        <View className="mb-4 mt-2 flex-row w-[90vw] h-44 justify-center ">
                                             <Image className="rounded-3xl"
                                                 source={{ uri: image500(movie.poster_path) }}
                                                 style={{ width: width * 0.30, height: height * 0.20 }}
                                                 resizeMode='cover'
                                             />
-                                            <View className="flex-col ml-4 justify-center space-y-2">
-                                                <Text className="text-white font-pregular text-lg ">
+                                            <View className="w-[65%] h-28 flex-col pl-3 pt-1">
+                                                <Text className="text-white font-pregular text-sm ">
                                                     {
                                                         movie.title
                                                     }
@@ -87,14 +87,13 @@ export default function Movies() {
                                                 <Text className="text-neutral-400 font-pregular ml-1 ">
                                                     {movie?.release_date?.split("-")[0]}
                                                 </Text>
-                                                <View className=" flex-row ">
-                                                    <StarIcon size="20" color="white" />
-                                                    <Text className="text-[#08d474] font-pregular ml-1">
-                                                        {Math.round((movie?.vote_average) * 100) / 100} / 10
-                                                    </Text>
-                                                </View>
-                                            </View>
 
+                                                <Text className="text-white text-xs font-plight"
+                                                    numberOfLines={6}>
+                                                    {movie.overview ? movie.overview : "N/A"}
+
+                                                </Text>
+                                            </View>
                                         </View>
                                     </TouchableWithoutFeedback>
                                 )
